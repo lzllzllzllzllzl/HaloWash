@@ -91,14 +91,14 @@ export function buildDiagnosis(mats: Mats): ModuleParts {
   const dome = new THREE.Mesh(new THREE.SphereGeometry(0.7, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.42), mats.shell);
   dome.scale.y = 0.85;
   g.add(dome);
-  // 装饰环带
-  const band1 = new THREE.Mesh(new THREE.TorusGeometry(0.7, 0.025, 8, 48), accentMaterial('#7AB3E8'));
+  // 装饰环带：移到壳体内部，避免与半圆球开口边缘重叠形成亮线
+  const band1 = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.018, 8, 48), accentMaterial('#7AB3E8'));
   band1.rotation.x = Math.PI / 2;
-  band1.position.y = 0.05;
+  band1.position.y = -0.05;
   g.add(band1);
-  const band2 = new THREE.Mesh(new THREE.TorusGeometry(0.7, 0.015, 8, 48), mats.metal);
+  const band2 = new THREE.Mesh(new THREE.TorusGeometry(0.66, 0.012, 8, 48), mats.metal);
   band2.rotation.x = Math.PI / 2;
-  band2.position.y = 0.12;
+  band2.position.y = -0.18;
   g.add(band2);
   addOutlineRing(g, 0.7, '#7AB3E8');
 

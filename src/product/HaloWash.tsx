@@ -132,11 +132,11 @@ export function HaloWash() {
     applyDim(stand, 1);
     applyDim(tanks, 1);
 
-    // 中央光柱：装配时隐藏在壳内，爆炸时展开覆盖全模块高度（-2.70~6.40）
+    // 中央光柱：装配时贯穿壳内堆栈（1.90~3.20），爆炸时展开覆盖全柱体（0.75~7.40）
     const beamMesh = beamRef.current;
     if (beamMesh) {
-      const topY = THREE.MathUtils.lerp(3.20, 6.40, e);
-      const botY = THREE.MathUtils.lerp(1.90, -2.70, e);
+      const topY = THREE.MathUtils.lerp(3.20, 7.40, e);
+      const botY = THREE.MathUtils.lerp(1.90, 0.75, e);
       beamMesh.scale.set(1, topY - botY, 1);
       beamMesh.position.y = (topY + botY) / 2;
       const activity = Math.max(ps.fx.diagnosis, ps.fx.spray, ps.fx.dry, ps.fx.care, ps.fx.aroma, ps.fx.music, ps.fx.massage, ps.fx.clean);
